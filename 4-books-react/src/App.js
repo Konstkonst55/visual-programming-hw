@@ -2,17 +2,19 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import styled from "styled-components";
 import BookCard from "./BookCard";
+import BookSearch from "./BookSearch";
 
 const Grid = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
+  gap: 10px;
+  justify-content: flex-start;
   padding: 20px;
 `;
 
 const App = () => {
   const [books, setBooks] = useState([]);
+  const [filteredBooks, setFilteredBooks] = useState([]);
 
   useEffect(() => {
     const fetchBooks = async () => {
@@ -36,6 +38,7 @@ const App = () => {
         );
 
         setBooks(booksWithImages);
+        setFilteredBooks(booksWithImages);
       } catch (error) {
         console.error("Ошибка при загрузке данных:", error);
       }
@@ -45,11 +48,14 @@ const App = () => {
   }, []);
 
   return (
-    <Grid>
-      {books.map((book) => (
-        <BookCard key={book.id} title={book.title} authors={book.authors} imageBlob={book.image} />
-      ))}
-    </Grid>
+    <>
+      <BookSearch books={books} onSearch={setFilteredBooks} />
+      <Grid>
+        {filteredBooks.map((book) => (
+          <BookCard key={book.id} title={book.title} authors={book.authors} imageBlob={book.image} />
+        ))}
+      </Grid>
+    </>
   );
 };
 
