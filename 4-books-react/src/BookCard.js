@@ -2,7 +2,9 @@ import React from "react";
 import styled from "styled-components";
 
 const Card = styled.div`
-  width: 200px;
+  flex-grow: 1;
+  min-width: 150px;
+  max-width: 200px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -31,19 +33,19 @@ const Authors = styled.p`
 `;
 
 const BookCard = ({ title, authors, imageBlob }) => {
-    const imageUrl = imageBlob instanceof Blob ? URL.createObjectURL(imageBlob) : imageBlob;
+  const imageUrl = imageBlob instanceof Blob ? URL.createObjectURL(imageBlob) : imageBlob;
 
-    return (
-        <Card>
-            {imageUrl ? (
-                <BookImage src={imageUrl} alt={title} />
-            ) : (
-                <BookImage src="placeholder.jpg" alt="Placeholder" />
-            )}
-            <Title>{title}</Title>
-            <Authors>{authors.join(", ")}</Authors>
-        </Card>
-    );
+  return (
+    <Card>
+      {imageUrl ? (
+        <BookImage src={imageUrl} alt={title} />
+      ) : (
+        <BookImage src="placeholder.jpg" alt="Placeholder" />
+      )}
+      <Title>{title}</Title>
+      <Authors>{authors.join(", ")}</Authors>
+    </Card>
+  );
 };
 
 export default BookCard;
