@@ -1,0 +1,28 @@
+.dataset {
+    width: 100%;
+    border-collapse: collapse;
+    background: #37476d;
+    border-radius: 8px;
+    font-size: 18px;
+    font-family: 'Courier New', Courier, monospace;
+    color: rgb(224, 224, 224);
+}
+
+.dataset th,
+.dataset td {
+    padding: 10px;
+    text-align: left;
+}
+
+.dataset th {
+    color: rgb(209, 218, 118);
+}
+
+.dataset .select-area {
+    width: 20px;
+    cursor: pointer;
+}
+
+.dataset tr.selected {
+    background: #ffffff27;
+}
