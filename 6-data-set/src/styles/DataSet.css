@@ -6,12 +6,16 @@
     font-size: 18px;
     font-family: 'Courier New', Courier, monospace;
     color: rgb(224, 224, 224);
+    transition: cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
 .dataset th,
 .dataset td {
     padding: 10px;
     text-align: left;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-lines: 3;
 }
 
 .dataset th {
