@@ -1,5 +1,7 @@
 body {
-    margin: 20px;
+    margin: 0px;
+    background-color: #1f1f1f;
+    height: 100%;
 }
 
 h2 {
@@ -42,6 +44,17 @@ h2 {
 
 .removing {
     animation: fadeOut 0.3s ease forwards;
+}
+
+.app-with-appbar {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.main-content {
+    flex-grow: 1;
+    box-sizing: border-box;
 }
 
 @keyframes fadeOut {

@@ -5,28 +5,21 @@ const DataSet = ({
     columns,
     data,
     onSelectIds,
-    selectedIndexes = [],
-    onSelectIndexes,
+    selectedIds = [],
     removingRows = []
 }) => {
-    const handleRowClick = (index, event) => {
+    const handleRowClick = (clickedId, event) => {
         let updatedSelection;
+
         if (event.ctrlKey) {
-            updatedSelection = selectedIndexes.includes(index)
-                ? selectedIndexes.filter((i) => i !== index)
-                : [...selectedIndexes, index];
+            updatedSelection = selectedIds.includes(clickedId)
+                ? selectedIds.filter((id) => id !== clickedId)
+                : [...selectedIds, clickedId];
         } else {
-            updatedSelection = [index];
+            updatedSelection = [clickedId];
         }
 
-        onSelectIndexes?.(updatedSelection);
-
-        if (onSelectIds) {
-            const selectedIds = updatedSelection
-                .map((i) => data[i]?.id)
-                .filter(Boolean);
-            onSelectIds(selectedIds);
-        }
+        onSelectIds?.(updatedSelection);
     };
 
     const computedColumns =
@@ -45,15 +38,15 @@ const DataSet = ({
                 </tr>
             </thead>
             <tbody>
-                {data.map((row, rowIndex) => (
+                {data.map((row) => (
                     <tr
-                        key={row.id || rowIndex}
-                        className={`${selectedIndexes.includes(rowIndex) ? "selected" : ""} ${removingRows.includes(row.id) ? "removing" : ""
+                        key={row.id}
+                        className={`${selectedIds.includes(row.id) ? "selected" : ""} ${removingRows.includes(row.id) ? "removing" : ""
                             }`}
                     >
                         <td
                             className="select-area"
-                            onClick={(e) => handleRowClick(rowIndex, e)}
+                            onClick={(e) => handleRowClick(row.id, e)}
                         ></td>
                         {computedColumns.map((col) => (
                             <td key={col.key}>
