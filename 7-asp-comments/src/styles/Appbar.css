@@ -1,0 +1,21 @@
+.appbar {
+  width: 100%;
+  background-color: #2b3550;
+  display: flex;
+  flex-direction: row;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.appbar a {
+  color: #ccc;
+  padding: 12px 20px;
+  text-decoration: none;
+  font-family: 'Courier New', Courier;
+}
+
+.appbar a.active {
+  background-color: rgb(209, 218, 118);
+  color: #2b3550;
+}

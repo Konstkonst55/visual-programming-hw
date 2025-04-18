@@ -1,0 +1,72 @@
+body {
+    margin: 0px;
+    background-color: #1f1f1f;
+    height: 100%;
+}
+
+h2 {
+    font-family: 'Courier New', Courier;
+}
+
+.controls {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.icon-btn {
+    background-color: #37476d;
+    border: none;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.icon-btn:disabled {
+    background-color: #818181;
+    cursor: not-allowed;
+}
+
+.icon-btn:hover:not(:disabled) {
+    background-color: #357ab8;
+}
+
+.icon-btn img {
+    width: 20px;
+    height: 20px;
+    pointer-events: none;
+}
+
+.removing {
+    animation: fadeOut 0.3s ease forwards;
+}
+
+.app-with-appbar {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.main-content {
+    flex-grow: 1;
+    box-sizing: border-box;
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: scale(1);
+        height: auto;
+    }
+
+    to {
+        opacity: 0;
+        transform: scale(0.95);
+        height: 0;
+    }
+}
