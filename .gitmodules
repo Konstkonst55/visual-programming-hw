@@ -1,0 +1,3 @@
+[submodule "CommentsAPI"]
+	path = CommentsAPI
+	url = https://github.com/Konstkonst55/CommentsAPI.git
