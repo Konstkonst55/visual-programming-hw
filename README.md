@@ -163,7 +163,7 @@ items[0].volumeInfo.imageLinks.thumbnail
 
 > [7-asp-comments](./7-asp-comments/)
 
-> [CommentsAPI](./CommentsAPI/)
+> [CommentsAPI](./CommentsAPI/CommentsAPI/Data/CommentDBContext.cs)
 
 1. Установить базу данных `PostgreSQL` [`https://www.postgresql.org/`](https://www.postgresql.org/) (с базой устанавливается графический интерфес `pgAdmin`)
 2. Реализовать репозиторий для взаимодействия веб-приложения из предыдущей работы с БД (предварительно создать нужные таблицы в БД).
@@ -178,7 +178,7 @@ items[0].volumeInfo.imageLinks.thumbnail
 
 > [7-asp-comments](./7-asp-comments/)
 
-> [CommentsAPI](./CommentsAPI/)
+> [CommentsAPI](./CommentsAPI/CommentsAPI/Logging/)
 
 Прочитать про логгирование в ASP .NET Core [`https://metanit.com/sharp/aspnet6/7.1.php`](https://metanit.com/sharp/aspnet6/7.1.php). Логгирование является важной частью приложения, которая позволяет получать подробности о работающей системе в том числе для облегчения нахождения и исправления ошибок.
 
