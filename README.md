@@ -47,7 +47,7 @@
 Реализовать в отдельном модуле функцию `calcStats(catsInfo)`, которая вычисляет статистику
 по полю `country`. `catsInfo` — массив из объектов со схемой
 
-```json
+```
 {
  "breed": string,
  "country": string,
@@ -74,7 +74,7 @@
 Реализовать демонстрационное приложение на `React`. Приложение получает данные о книгах по API
 [`https://fakeapi.extendsclass.com/books`](https://fakeapi.extendsclass.com/books). `JSON` схема ответа:
 
-```json
+```
 [
  {
  "id": numeric,
