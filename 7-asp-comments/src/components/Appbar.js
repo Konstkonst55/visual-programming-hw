@@ -6,10 +6,7 @@ const Appbar = () => {
     return (
         <nav className="appbar">
             <NavLink to="/comments">Комментарии</NavLink>
-            <NavLink to="/posts">Посты</NavLink>
-            <NavLink to="/albums">Альбомы</NavLink>
-            <NavLink to="/todos">Задачи</NavLink>
-            <NavLink to="/users">Пользователи</NavLink>
+            <NavLink to="/logs">Логи</NavLink>
         </nav>
     );
 };

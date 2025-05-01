@@ -9,21 +9,6 @@ import EditIcon from "./icons/ic-edit.svg";
 const API_ROOT = "http://localhost:5000/";
 
 const validationSchemas = {
-    posts: Yup.object({
-        title: Yup.string().required("Введите заголовок"),
-        body: Yup.string().required("Введите содержимое")
-    }),
-    albums: Yup.object({
-        title: Yup.string().required("Введите название альбома")
-    }),
-    todos: Yup.object({
-        title: Yup.string().required("Введите задачу"),
-        completed: Yup.boolean()
-    }),
-    users: Yup.object({
-        name: Yup.string().required("Имя обязательно"),
-        email: Yup.string().email("Некорректный email").required("Email обязателен")
-    }),
     comments: Yup.object({
         postId: Yup.number().required("ID поста обязателен"),
         name: Yup.string().required("Имя обязательно"),
@@ -33,19 +18,13 @@ const validationSchemas = {
 };
 
 const initialValuesMap = {
-    posts: { title: "", body: "" },
-    albums: { title: "" },
-    todos: { title: "", completed: false },
-    users: { name: "", email: "" },
-    comments: { postId: 1, name: "", email: "", body: "" }
+    comments: { postId: 1, name: "", email: "", body: "" },
+    logs: {}
 };
 
 const columnOrderMap = {
     comments: ["postId", "name", "email", "body"],
-    posts: ["userId", "title", "body"],
-    albums: ["userId", "title"],
-    todos: ["userId", "title", "completed"],
-    users: ["name", "email"]
+    logs: ["timestamp", "message", "level", "endpoint", "exception"]
 };
 
 const GenericPage = ({ endpoint }) => {
@@ -167,7 +146,7 @@ const GenericPage = ({ endpoint }) => {
         <div className="page">
             <h2>{endpoint[0].toUpperCase() + endpoint.slice(1)}</h2>
 
-            {schema && (
+            {schema && endpoint !== "logs" && (
                 <Formik
                     enableReinitialize
                     initialValues={formInitialValues}
@@ -193,24 +172,26 @@ const GenericPage = ({ endpoint }) => {
                 </Formik>
             )}
 
-            <div className="controls">
-                <button
-                    className="icon-btn"
-                    onClick={deleteSelected}
-                    disabled={selectedIds.length === 0}
-                    title="Удалить"
-                >
-                    <img src={TrashIcon} alt="Удалить" />
-                </button>
-                <button
-                    className="icon-btn"
-                    onClick={startEdit}
-                    disabled={selectedIds.length !== 1}
-                    title="Изменить"
-                >
-                    <img src={EditIcon} alt="Изменить" />
-                </button>
-            </div>
+            {endpoint !== "logs" && (
+                <div className="controls">
+                    <button
+                        className="icon-btn"
+                        onClick={deleteSelected}
+                        disabled={selectedIds.length === 0}
+                        title="Удалить"
+                    >
+                        <img src={TrashIcon} alt="Удалить" />
+                    </button>
+                    <button
+                        className="icon-btn"
+                        onClick={startEdit}
+                        disabled={selectedIds.length !== 1}
+                        title="Изменить"
+                    >
+                        <img src={EditIcon} alt="Изменить" />
+                    </button>
+                </div>
+            )}
 
             <DataSet
                 data={data}
